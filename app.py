@@ -1,6 +1,11 @@
 import streamlit as st
+import pandas as pd
 import joblib
-import numpy as np
+# If your model used a specific scaler or encoder, 
+# ensure scikit-learn is imported even if not called directly.
+import sklearn 
+
+model = joblib.load("regression_model.sav")
 
 st.title("Aplikasi Prediksi Regresi")
 
@@ -15,5 +20,10 @@ if st.button("Prediksi"):
     data = np.array([[f1, f2]])
     hasil = model.predict(data)
     st.success(f"Hasil Prediksi: {hasil[0]}")
+
+
+
+
+
 
 
