@@ -1,4 +1,4 @@
-import streamlit as st
+import steamlit as st
 import joblib
 import numpy as np
 
@@ -15,3 +15,4 @@ if st.button("Prediksi"):
     data = np.array([[f1, f2]])
     hasil = model.predict(data)
     st.success(f"Hasil Prediksi: {hasil[0]}")
+
