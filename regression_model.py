@@ -34,7 +34,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-df = pd.read_csv('train.csv')
+df = pd.read_csv('/drive/MyDrive/pelatihan_ml/train.csv')
+
 
 X = df.iloc[:, :-1]
 y = df.iloc[:, -1]
@@ -57,4 +58,5 @@ with open(file_path, "w") as f:
     f.write(script_content)
 
 file_path
+
 
