@@ -1,29 +1,18 @@
-import streamlit as st
 import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 import joblib
-# If your model used a specific scaler or encoder, 
-# ensure scikit-learn is imported even if not called directly.
-import sklearn 
 
-model = joblib.load("regression_model.sav")
+df = pd.read_csv("train.csv")
 
-st.title("Aplikasi Prediksi Regresi")
+X = df.iloc[:, :-1]
+y = df.iloc[:, -1]
 
-model = joblib.load("regression_model.sav")
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
 
-st.write("Masukkan nilai fitur:")
+model = LinearRegression()
+model.fit(X_train, y_train)
 
-f1 = st.number_input("Fitur 1", value=0.0)
-f2 = st.number_input("Fitur 2", value=0.0)
-
-if st.button("Prediksi"):
-    data = np.array([[f1, f2]])
-    hasil = model.predict(data)
-    st.success(f"Hasil Prediksi: {hasil[0]}")
-
-
-
-
-
-
-
+joblib.dump(model, "regression_model.sav")
